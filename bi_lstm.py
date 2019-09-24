@@ -199,14 +199,14 @@ class TULAR:
 
         acc1 = acc_top1 / test_count
         acc5 = acc_top5 / test_count
-        print(acc_top1 / test_count)
-        print(acc_top5 / test_count)
+        # print(acc_top1 / test_count)
+        # print(acc_top5 / test_count)
 
         TP = sum([macrof1_dict[key].TP for key in macrof1_dict.keys()])
         FP = sum([macrof1_dict[key].FP for key in macrof1_dict.keys()])
         FN = sum([macrof1_dict[key].FN for key in macrof1_dict.keys()])
 
-        print(TP, FP, FN)
+        # print(TP, FP, FN)
 
         microP = TP / (TP + FP)
         microR = TP / (TP + FN)
@@ -218,15 +218,17 @@ class TULAR:
         macroP = np.mean([macrof1_dict[key].get_P() for key in macrof1_dict.keys()])
         macroR = np.mean([macrof1_dict[key].get_R() for key in macrof1_dict.keys()])
 
-        print(microP, microR, microf1, macrof1)
+        # print(microP, microR, microf1, macrof1)
 
-        print(macroP, macroR, 2 * (macroP * macroR) / (macroP + macroR))
+        # print(macroP, macroR, 2 * (macroP * macroR) / (macroP + macroR))
 
         self.recorder.add_test_end_time(datetime.datetime.now())
 
         self.recorder.add_result(acc1, acc5, macroP, macroR, 2 * (macroP * macroR) / (macroP + macroR))
 
         self.recorder.record()
+
+        self.recorder.show_results()
 
 
 if __name__ == "__main__":

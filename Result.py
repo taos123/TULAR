@@ -52,6 +52,10 @@ class Recorder:
         self.results.append(result)
         self.f_w.write(result.to_string())
 
+    def show_results(self):
+        for result in self.results:
+            print(result.to_string())
+
 
 class Result:
     def __init__(self, epoch_number, train_start_time, train_end_time, test_start_time, test_end_time, acc_1, acc_5, macro_P, macro_R, macro_f1):
